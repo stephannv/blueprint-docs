@@ -1,0 +1,76 @@
+site_name: Blueprint Docs
+site_url: https://blueprint.gunbolt.org
+site_author: Stephann V.
+site_description: >-
+  Blueprint is a framework for writing reusable and testable HTML templates in
+  plain Crystal, allowing an oriented object approach when building web views
+
+copyright: Copyright &copy; 2023-present Stephann Vasconcelos
+
+repo_name: gunbolt/blueprint
+repo_url: https://github.com/gunbolt/blueprint
+
+theme:
+  name: material
+  logo: assets/blueprint-logo.svg
+  favicon: assets/favicon.ico
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gunbolt
+
+nav:
+  - Intro:
+    - index.md
+    - installation.md
+  - Guides:
+    - guides/getting-started.md
+    - guides/components.md
+    - guides/attributes.md
+    - guides/conditional-rendering.md
+    - guides/enveloping.md
+    - guides/utils.md
+    - guides/safety.md
+
+  - Cookbook:
+    - recipes/design-system-components.md
+    - recipes/multiple-layouts.md
+
+  - Integrations:
+    - integrations/kemal.md
+    - integrations/lucky.md
+
+  - Changelog:
+    - changelogs/v0.2.0.md
+    - changelogs/v0.1.0.md
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
