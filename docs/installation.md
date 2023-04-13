@@ -4,7 +4,7 @@ In `shard.yml`, add:
 ```yaml
 dependencies:
   blueprint:
-    github: stephannv/blueprint
+    github: gunbolt/blueprint
 ```
 
 And run `shards install`.
