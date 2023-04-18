@@ -50,6 +50,7 @@ nav:
     - guides/enveloping.md
     - guides/utils.md
     - guides/safety.md
+    - guides/builder.md
 
   - Cookbook:
     - recipes/design-system-components.md
@@ -60,6 +61,7 @@ nav:
     - integrations/lucky.md
 
   - Changelog:
+    - changelogs/v0.3.0.md
     - changelogs/v0.2.0.md
     - changelogs/v0.1.0.md
 
