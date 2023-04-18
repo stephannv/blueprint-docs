@@ -2,7 +2,7 @@
 
 ## Basic Usage
 
-After [installing the shard](installation.md), you will need to follow three
+After [installing the shard](../installation.md), you will need to follow three
 steps to start using Blueprint:
 
 1. Require `"blueprint/html"`
