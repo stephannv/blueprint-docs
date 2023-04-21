@@ -221,7 +221,7 @@ end
 ```
 
 The above example will raise an error `Error: 'Alert.new' is not expected to
-be invoked with a block, but a block was given`, to fix this, you need to add
+be invoked with a block, but a block was given`, to fix this you need to add
 parentheses to `render` call when using with `{ ... }`.
 
 ```crystal
