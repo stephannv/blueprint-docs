@@ -1,4 +1,4 @@
-site_name: Blueprint Docs
+site_name: Blueprint
 site_url: https://stephannv.github.io/blueprint-docs/
 site_author: Stephann V.
 site_description: >-
@@ -15,9 +15,10 @@ theme:
   logo: assets/blueprint-logo.svg
   favicon: assets/favicon.ico
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.instant
     - navigation.footer
+    - navigation.tracking
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -36,44 +37,32 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/stephannv
+      link: https://github.com/stephannv/blueprint
 
 nav:
-  - Intro:
-    - index.md
-    - installation.md
-  - Guides:
-    - guides/getting-started.md
-    - guides/components.md
-    - guides/attributes.md
-    - guides/conditional-rendering.md
-    - guides/enveloping.md
-    - guides/utils.md
-    - guides/safety.md
-    - guides/svg.md
-    - guides/builder.md
+  - index.md
 
-  - Cookbook:
-    - recipes/design-system-components.md
-    - recipes/multiple-layouts.md
+  - Handbook:
+    - handbook/getting-started.md
+    - handbook/tags.md
+    - handbook/attributes.md
+    - handbook/utils.md
+    - handbook/components.md
+    - handbook/conditional-rendering.md
+    - handbook/enveloping.md
+    - handbook/helpers.md
+    - handbook/safety.md
+    - handbook/style-variants.md
+    - handbook/svg.md
+    - handbook/builder.md
+    - handbook/code-style.md
 
-  - Integrations:
-    - integrations/kemal.md
-    - integrations/lucky.md
-
-  - Changelog:
-    - changelogs/v0.5.1.md
-    - changelogs/v0.5.0.md
-    - changelogs/v0.4.0.md
-    - changelogs/v0.3.0.md
-    - changelogs/v0.2.0.md
-    - changelogs/v0.1.0.md
 
 markdown_extensions:
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.tabbed:
