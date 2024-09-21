@@ -51,6 +51,7 @@ nav:
     - handbook/conditional-rendering.md
     - handbook/enveloping.md
     - handbook/helpers.md
+    - handbook/forms.md
     - handbook/safety.md
     - handbook/style-variants.md
     - handbook/svg.md
