@@ -33,8 +33,14 @@ Output:
 
 <span>&lt;script&gt;alert(&#39;DANGER!&#39;)&lt;/script&gt;</span>
 
-<input class="some-class&quot; onblur=&quot;alert(&#39;DANGER!&#39;)">
+<input class="some-class&quot; onblur=&quot;alert('DANGER!')">
 ```
+
+!!! note "Escaping"
+
+    Blueprint escapes attribute values replacing `"` by `&quot;`, and escapes
+    content using the Crystal native `HTML.escape`. If you find any issues
+    related to this behavior, please report them on Blueprint repository.
 
 ## Bypassing safety
 

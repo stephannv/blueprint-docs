@@ -36,6 +36,33 @@ Output:
 <div><script>Nice script!</script></div>
 ```
 
+#### `#escape_once`
+Returns an escaped version of given content without affecting existing escaped
+entities.
+
+```crystal
+class ExamplePage
+  include Blueprint::HTML
+
+  def blueprint
+    div { escape_once("1 < 2 &amp; 3") }
+
+    div { escape_once("&lt;&lt; Accept & Checkout") }
+  end
+end
+
+ExamplePage.new.to_s
+```
+
+Output:
+
+```html
+<div>1 &lt; 2 &amp; 3</div>
+
+<div>&lt;&lt; Accept &amp; Checkout</div>
+```
+
+
 
 #### `#tokens` (Experimental)
 Allows to build classes based on conditionals. It receives a `NamedTuple` where
