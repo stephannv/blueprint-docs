@@ -1,18 +1,18 @@
-# Enveloping
+# Wrapping
 
-By overriding the `#envelope` method, you can create a wrapper around your view
+By overriding the `#around_render` method, you can create a wrapper around your view
 content. This is useful when defining layouts for pages, for example. Don't
-forget to yield a block inside `#envelope` method.
+forget to yield a block inside `#around_render` method.
 
 ```crystal
-class ExamplePage
+class Example
   include Blueprint::HTML
 
   private def blueprint
     h1 { "Home" }
   end
 
-  private def envelope
+  private def around_render(&)
     html do
       body do
         yield
@@ -21,7 +21,7 @@ class ExamplePage
   end
 end
 
-ExamplePage.new.to_s
+Example.new.to_s
 ```
 
 Output:
@@ -34,14 +34,15 @@ Output:
 </html>
 ```
 
-With `#envelope` method you can create some flexible layouts for your pages. For
-example, you can use inheritance to have multiple layouts on your application.
+With `#around_render` method you can create some flexible layouts for your
+pages. For example, you can use inheritance to have multiple layouts on your
+application.
 
 ```crystal
 class MainLayout
   include Blueprint::HTML
 
-  private def envelope
+  private def around_render(&)
     html do
       body do
         div class: "main-layout" do
@@ -55,7 +56,7 @@ end
 class AuthLayout
   include Blueprint::HTML
 
-  private def envelope
+  private def around_render(&)
     html do
       body do
         div class: "auth-layout" do

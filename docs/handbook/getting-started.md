@@ -12,11 +12,11 @@ To start using Blueprint:
 ```crystal
 require "blueprint/html"
 
-class ExamplePage
+class Example
   include Blueprint::HTML
 
   private def blueprint
-    h1 "Hello World"
+    h1 { "Hello World" }
   end
 end
 ```
@@ -41,7 +41,7 @@ class ProfilePage
   def initialize(@user : User); end
 
   private def blueprint
-    h1 @user.name
+    h1 { @user.name }
 
     admin_badge if admin?
   end

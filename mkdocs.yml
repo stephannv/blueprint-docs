@@ -44,16 +44,14 @@ nav:
 
   - Handbook:
     - handbook/getting-started.md
-    - handbook/tags.md
+    - handbook/elements.md
     - handbook/attributes.md
-    - handbook/utils.md
+    - handbook/helpers.md
     - handbook/components.md
     - handbook/conditional-rendering.md
-    - handbook/enveloping.md
-    - handbook/helpers.md
-    - handbook/forms.md
+    - handbook/wrapping.md
+    - handbook/utils.md
     - handbook/safety.md
-    - handbook/style-variants.md
     - handbook/svg.md
     - handbook/builder.md
     - handbook/code-style.md

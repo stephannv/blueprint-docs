@@ -2,62 +2,64 @@
 
 ## Overview
 
-Blueprint provide some utility methods to help you build your HTML:
+Blueprint provide some helper methods to help you build your HTML.
 
-#### `#doctype`
-Adds HTML 5 doctype declaration.
+!!! note "Utils vs Helpers"
 
+    The key difference between the utility methods described here and the
+    helper methods described in [Helpers](./helpers.md) is that helper methods
+    append content to the buffer, while utility methods just return values
+    without appending anything to the buffer.
 
-#### `#plain`
-Writes plain text on HTML without tags.
+#### `#safe`
+Wraps the given object in a `Blueprint::SafeValue`, indicating to Blueprint that
+the content should be rendered without escaping. Learn more about this at
+[Safety](./safety.md).
 
-#### `#whitespace`
-Adds a simple whitespace to HTML.
-
-
-#### `#comment`
-Allows writing HTML comments.
-
-#### `#raw`
-Write content without escaping. You must pass a `Blueprint::SafeObject` to
-this method. Learn more about this at [Safety](./safety.md) section.
-**WARNING:** This must be used with great caution.
-You should avoid using this method with any content that originates from an
-untrusted source (eg. people on internet).
-
-## Examples
 ```crystal
-class ExamplePage
+class Example
   include Blueprint::HTML
 
-  private def blueprint
-    doctype
+  def blueprint
+    div { "<script>Nice script!</script>" }
 
-    comment "This is a comment"
-
-    h1 do
-      plain "Welcome"
-      whitespace
-      strong { "Jane Doe" }
-    end
-
-    raw safe("<script>alert('Nice Script!')</script>")
+    div { safe("<script>Nice script!</script>") }
   end
 end
 
-ExamplePage.new.to_s
+Example.new.to_s
 ```
 
-Output
+Output:
 
 ```html
-<!DOCTYPE html>
+<div>&lt;script&gt;Nice script!&lt;/script&gt;</div>
 
-<!--This is a comment-->
+<div><script>Nice script!</script></div>
+```
 
-<h1>
-  Welcome <strong>Jane Doe</strong>
-</h1>
+#### `#escape_once`
+Returns an escaped version of given content without affecting existing escaped
+entities.
 
-<script>alert('Nice Script!')</script>
+```crystal
+class Example
+  include Blueprint::HTML
+
+  def blueprint
+    div { escape_once("1 < 2 &amp; 3") }
+
+    div { escape_once("&lt;&lt; Accept & Checkout") }
+  end
+end
+
+Example.new.to_s
+```
+
+Output:
+
+```html
+<div>1 &lt; 2 &amp; 3</div>
+
+<div>&lt;&lt; Accept &amp; Checkout</div>
 ```

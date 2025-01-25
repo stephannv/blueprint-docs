@@ -7,7 +7,7 @@ components are escaped by default.
 
 
 ```crystal
-class ExamplePage
+class Example
   include Blueprint::HTML
 
   private def blueprint
@@ -21,7 +21,7 @@ class ExamplePage
   end
 end
 
-ExamplePage.new.to_s
+Example.new.to_s
 ```
 
 Output:
@@ -49,8 +49,12 @@ method appends content to buffer without escaping, while the `#safe` method
 wraps the given object in a `Blueprint::SafeValue`, indicating to Blueprint that
 the content should be rendered without escaping.
 
+**WARNING:** This must be used with great caution.
+You should avoid using this method with any content that originates from an
+untrusted source (eg. people on internet).
+
 ```crystal
-class ExamplePage
+class Example
   include Blueprint::HTML
 
   private def blueprint
@@ -62,7 +66,7 @@ class ExamplePage
   end
 end
 
-ExamplePage.new.to_s
+Example.new.to_s
 ```
 
 Output

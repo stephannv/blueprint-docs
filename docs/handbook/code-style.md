@@ -89,26 +89,3 @@ private def blueprint
   }
 end
 ```
-
-You can pass content to tags either through the first positional argument or via
-a block. All of the following are valid:
-
-```crystal
-private def blueprint
-  h1 "Hello World"
-
-  h1 { "Hello World" }
-
-  h1 do
-    "Hello World"
-  end
-
-  h1 "Hello World", class: "heading"
-
-  h1(class: "heading") { "Hello World" }
-
-  h1(class: "heading") do
-    "Hello World"
-  end
-end
-```

@@ -68,3 +68,11 @@ that Blueprint supports most of its syntax seamlessly.
 
 If you run into any trouble, please [start a discussion](https://github.com/stephannv/blueprint/discussions), or [open an issue](https://github.com/stephannv/blueprint/issues)
 if you  think you’ve found a bug.
+
+## Alternatives
+
+You can find Blueprint alternatives here:
+
+- [awesome-crystal](https://github.com/veelenga/awesome-crystal?tab=readme-ov-file#html-builders)
+- [shards.info](https://shards.info/tags/html)
+- [shardsbox.org](https://shardbox.org/categories/HTML_Builders)

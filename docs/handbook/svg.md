@@ -3,7 +3,7 @@
 Blueprint supports building SVG tags.
 
 ```crystal
-class ExamplePage
+class Example
   include Blueprint::HTML
 
   private def blueprint
@@ -16,7 +16,7 @@ class ExamplePage
   end
 end
 
-ExamplePage.new.to_s
+Example.new.to_s
 ```
 
 Output:
@@ -35,7 +35,7 @@ method block, using a SVG tag outside SVG block will result in a compilation
 error.
 
 ```crystal
-class ExamplePage
+class Example
   include Blueprint::HTML
 
   private def blueprint
@@ -43,7 +43,7 @@ class ExamplePage
       path d: "M3.75 9h16.5m-16.5 6.75h16.5" # OK
     end
 
-    # Error: undefined local variable or method 'path' for ExamplePage
+    # Error: undefined local variable or method 'path' for Example
     path d: "M3.75 9h16.5m-16.5 6.75h16.5"
   end
 end
