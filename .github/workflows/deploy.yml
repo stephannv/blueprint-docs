@@ -4,23 +4,26 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - '*'
+      - "*"
 
 permissions:
-  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - uses: actions/cache@v2
+      - run: pip install zensical
+      - run: zensical build --clean
+
+      - uses: actions/upload-pages-artifact@v4
         with:
-          key: ${{ github.ref }}
-          path: .cache
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+          path: site
+      - uses: actions/deploy-pages@v4
