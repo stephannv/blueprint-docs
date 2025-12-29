@@ -3,12 +3,14 @@
 ## Overview
 
 All non-deprecated HTML elements are available as instance methods on
-Blueprint::HTML. The tag methods accept a NamedTuple, which are then converted
+`Blueprint::HTML`. The tag methods accept a NamedTuple, which are then converted
 into HTML attributes.
 
 ```crystal
 class Example
-  def blueprint
+  include Blueprint::HTML
+  
+  private def blueprint
     span { "Hello!" }
 
     h1 class: "heading" do
@@ -40,7 +42,9 @@ However, you can still pass attributes to these elements.
 
 ```crystal
 class Example
-  def blueprint
+  include Blueprint::HTML
+
+  private def blueprint
     iframe src: "page.html"
 
     meta charset: "utf-8"
@@ -63,7 +67,9 @@ If you need to use a custom element, you can use the `#element` instance method.
 
 ```crystal
 class Example
-  def blueprint
+  include Blueprint::HTML
+
+  private def blueprint
     element("v-btn", to: "home") { "Home" }
 
     element("QCard", id: "welcome-card") { "Hello World!" }
@@ -85,11 +91,13 @@ If you frequently use a custom element, you can register it with the
 
 ```crystal
 class Example
+  include Blueprint::HTML
+
   register_element :v_btn
   register_element :q_card, "QCard"
 
-  def blueprint
-    element("v-btn", to: "home") { "Home" }
+  private def blueprint
+    v_btn(to: "home") { "Home" }
 
     q_card(id: "welcome-card") { "Hello World!" }
   end
