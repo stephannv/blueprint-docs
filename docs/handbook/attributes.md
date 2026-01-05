@@ -2,7 +2,7 @@
 
 ## Overview
 
-HTML element methods (eg. `#h1`, `#meta`, `#div`, etc), accepts a NamedTuple as
+HTML element methods (eg. `#h1`, `#meta`, `#div`, etc), accepts a `NamedTuple` or `Hash` as
 parameter, so it is possible to pass any attributes to an HTML element.
 
 ```crystal
@@ -26,7 +26,7 @@ puts Example.new.to_s
 ```
 
 Note that Blueprint parses all attributes name replacing `_` by `-`.
-So `v_model: "name"` will become `v-model="name"`.
+So `v_model: "name"` will become `v-model="name"`. See [Hash attributes](#hash-attributes) to bypass this conversion.
 
 ## NamedTuple attributes
 
@@ -56,6 +56,31 @@ Output:
   Home
 </div>
 ```
+
+## Hash attributes
+
+Hash attributes follow the same conversion rules as NamedTuple, except that underscores are not converted to dashes.
+
+```crystal
+class Example
+  include Blueprint::HTML
+
+  private def blueprint
+    button({ "data-on:click__prevent" => "submit" }) do
+      "Click"
+    end
+  end
+end
+```
+
+Output:
+
+```html
+<button data-on:click__prevent="submit">
+  Click
+</button>
+```
+
 
 ## Boolean attributes
 
@@ -106,4 +131,31 @@ Output:
 <div class="a b c d">
   Hello
 </div>
+```
+
+## Bring your own attribute processor
+
+If you need custom attribute-processing behavior, you can override the 
+`#render_attributes` method to fully control how attributes are rendered.
+
+```crystal
+class Example
+  include Blueprint::HTML
+
+  private def blueprint
+    input x: {y: 2}
+  end
+
+  private def render_attributes(attributes : Hash | NamedTuple) : Nil
+    buffer << " my-own-logic"
+  end
+end
+
+Example.new.to_s
+```
+
+Output:
+
+```html
+<input my-own-logic>
 ```

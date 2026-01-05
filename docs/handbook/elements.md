@@ -3,8 +3,8 @@
 ## Overview
 
 All non-deprecated HTML elements are available as instance methods on
-`Blueprint::HTML`. The tag methods accept a NamedTuple, which are then converted
-into HTML attributes.
+`Blueprint::HTML`. The tag methods accept a `NamedTuple` or `Hash`, which is 
+converted into HTML attributes.
 
 ```crystal
 class Example
